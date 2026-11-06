@@ -96,15 +96,41 @@ const pendingCount = tasks.filter(
 const completedCount = tasks.filter(
   (task) => task.status === "Completed"
 ).length;
+const progress = tasks.length === 0
+  ? 0
+  : Math.round((completedCount / tasks.length) * 100);
 
   return (
     <main className="tasks-page">
       <h1>Task Tracker</h1>
 
-      <p className="task-summary">
-  {pendingCount} Pending, {completedCount} Completed
-</p>
+      <div className="progress-section">
+  <div className="progress-heading">
+    <span>Task Progress</span>
+    <span>{completedCount} / {tasks.length}</span>
+  </div>
 
+  <div className="progress-track">
+    <div
+      className="progress-fill"
+      style={{ width: `${progress}%` }}
+    />
+  </div>
+
+  <div className="progress-labels">
+    <span className="completed-label">
+      {completedCount} Completed
+    </span>
+
+    <span className="pending-label">
+      {pendingCount} Pending
+    </span>
+  </div>
+
+  <p className="progress-text">
+    {progress}% completed
+  </p>
+</div>
       {/* Reusable filter component */}
       <TaskFilters
   statusFilter={statusFilter}
