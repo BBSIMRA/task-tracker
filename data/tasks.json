@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Design login page",
+    "status": "Pending",
+    "priority": "High"
+  },
+  {
+    "id": 2,
+    "title": "Fix navbar bug",
+    "status": "Completed",
+    "priority": "Medium"
+  },
+  {
+    "id": 3,
+    "title": "Build dashboard cards",
+    "status": "Pending",
+    "priority": "High"
+  },
+  {
+    "id": 4,
+    "title": "Write API integration",
+    "status": "Pending",
+    "priority": "Low"
+  },
+  {
+    "id": 5,
+    "title": "Optimize table rendering",
+    "status": "Completed",
+    "priority": "Medium"
+  }
+]
