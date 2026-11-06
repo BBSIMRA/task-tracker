@@ -1,0 +1,103 @@
+
+.tasks-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.tasks-page h1 {
+  margin-bottom: 20px;
+}
+
+.task-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.task-controls select,
+.task-table select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.task-table th,
+.task-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.task-table th {
+  background: #f5f5f5;
+}
+
+.priority {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+.high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.completed td {
+  color: #999;
+  background: #f8f8f8;
+}
+
+.completed td:first-child {
+  text-decoration: line-through;
+}
+
+.message {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.message button {
+  padding: 8px 14px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid #3984e8;
+  outline-offset: 2px;
+}
+.task-summary {
+  color: #666;
+  font-size: 14px;
+  margin: 8px 0 20px;
+}
+.task-summary {
+  color: #666;
+  font-size: 14px;
+  margin: 8px 0 20px;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
