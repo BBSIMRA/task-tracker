@@ -14,26 +14,27 @@ export default function TaskTable({
   updatingTaskId,
 }: TaskTableProps) {
   return (
-    <table className="task-table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Status</th>
-          <th>Priority</th>
-        </tr>
-      </thead>
+    <div className="table-container">
+      <table className="task-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {tasks.map((task) => (
-          <TaskRow
-            key={task.id}
-            task={task}
-            onStatusChange={onStatusChange}
-            updating={updatingTaskId === task.id}
-          />
-        ))}
-      </tbody>
-    </table>
-
+        <tbody>
+          {tasks.map((task) => (
+            <TaskRow
+              key={task.id}
+              task={task}
+              onStatusChange={onStatusChange}
+              updating={updatingTaskId === task.id}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
