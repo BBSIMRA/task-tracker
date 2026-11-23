@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
@@ -20,7 +19,6 @@ export default function TasksPage() {
   const [statusFilter, setStatusFilter] = useState("All");
   const [priorityFilter, setPriorityFilter] = useState("All");
   const [sortOrder, setSortOrder] = useState("High to Low");
-
 
   // Load tasks
   async function loadTasks() {
@@ -50,9 +48,7 @@ export default function TasksPage() {
       const updatedTask = await updateTaskStatus(id, status);
 
       setTasks((previousTasks) =>
-        previousTasks.map((task) =>
-          task.id === id ? updatedTask : task
-        )
+        previousTasks.map((task) => (task.id === id ? updatedTask : task)),
       );
     } catch {
       setError("Unable to update task. Please try again.");
@@ -63,87 +59,81 @@ export default function TasksPage() {
 
   // Filter and sort tasks
   const displayedTasks = useMemo(() => {
-  const priorityOrder: Record<Priority, number> = {
-    High: 1,
-    Medium: 2,
-    Low: 3,
-  };
+    const priorityOrder: Record<Priority, number> = {
+      High: 1,
+      Medium: 2,
+      Low: 3,
+    };
 
-  return tasks
-    .filter((task) => {
-      const matchesStatus =
-        statusFilter === "All" || task.status === statusFilter;
+    return tasks
+      .filter((task) => {
+        const matchesStatus =
+          statusFilter === "All" || task.status === statusFilter;
 
-      const matchesPriority =
-        priorityFilter === "All" || task.priority === priorityFilter;
+        const matchesPriority =
+          priorityFilter === "All" || task.priority === priorityFilter;
 
-      return matchesStatus && matchesPriority;
-    })
-    .sort((a, b) => {
-      const difference =
-        priorityOrder[a.priority] - priorityOrder[b.priority];
+        return matchesStatus && matchesPriority;
+      })
+      .sort((a, b) => {
+        const difference =
+          priorityOrder[a.priority] - priorityOrder[b.priority];
 
-      return sortOrder === "High to Low"
-        ? difference
-        : -difference;
-    });
-}, [tasks, statusFilter, priorityFilter, sortOrder]);
+        return sortOrder === "High to Low" ? difference : -difference;
+      });
+  }, [tasks, statusFilter, priorityFilter, sortOrder]);
 
-const pendingCount = tasks.filter(
-  (task) => task.status === "Pending"
-).length;
+  const pendingCount = tasks.filter((task) => task.status === "Pending").length;
 
-const completedCount = tasks.filter(
-  (task) => task.status === "Completed"
-).length;
-const progress = tasks.length === 0
-  ? 0
-  : Math.round((completedCount / tasks.length) * 100);
+  const completedCount = tasks.filter(
+    (task) => task.status === "Completed",
+  ).length;
+  const progress =
+    tasks.length === 0 ? 0 : Math.round((completedCount / tasks.length) * 100);
 
   return (
     <main className="tasks-page">
       <h1>Task Tracker</h1>
 
-
       {!loading && !error && (
-      <div className="progress-section">
-  <div className="progress-heading">
-    <span>Task Progress</span>
-    <span>{completedCount} / {tasks.length}</span>
-  </div>
+        <div className="progress-section">
+          <div className="progress-heading">
+            <span>Task Progress</span>
+            <span>
+              {completedCount} / {tasks.length}
+            </span>
+          </div>
 
-  <div className="progress-track">
-    <div
-      className="progress-fill"
-      style={{ width: `${progress}%` }}
-    />
-  </div>
+          <div
+            className="progress-track"
+            role="progressbar"
+            aria-label="Task completion progress"
+            aria-valuenow={progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
+          </div>
 
-  <div className="progress-labels">
-    <span className="completed-label">
-      {completedCount} Completed
-    </span>
+          <div className="progress-labels">
+            <span className="completed-label">{completedCount} Completed</span>
 
-    <span className="pending-label">
-      {pendingCount} Pending
-    </span>
-  </div>
+            <span className="pending-label">{pendingCount} Pending</span>
+          </div>
 
-  <p className="progress-text">
-    {progress}% completed
-  </p>
-</div>
+          <p className="progress-text">{progress}% completed</p>
+        </div>
       )}
 
       {/* Reusable filter component */}
       <TaskFilters
-  statusFilter={statusFilter}
-  setStatusFilter={setStatusFilter}
-  priorityFilter={priorityFilter}
-  setPriorityFilter={setPriorityFilter}
-  sortOrder={sortOrder}
-  setSortOrder={setSortOrder}
-/>
+        statusFilter={statusFilter}
+        setStatusFilter={setStatusFilter}
+        priorityFilter={priorityFilter}
+        setPriorityFilter={setPriorityFilter}
+        sortOrder={sortOrder}
+        setSortOrder={setSortOrder}
+      />
 
       {/* Loading state */}
       {loading && <p>Loading tasks...</p>}
@@ -170,14 +160,14 @@ const progress = tasks.length === 0
         <div className="message">
           <p>No tasks match your filters.</p>
           <button
-  onClick={() => {
-    setStatusFilter("All");
-    setPriorityFilter("All");
-    setSortOrder("High to Low");
-  }}
->
-  Clear Filter
-</button>
+            onClick={() => {
+              setStatusFilter("All");
+              setPriorityFilter("All");
+              setSortOrder("High to Low");
+            }}
+          >
+            Clear Filter
+          </button>
         </div>
       )}
     </main>
