@@ -102,6 +102,7 @@ select:focus-visible {
   width: 100%;
   min-width: 600px;
 }
+
 .progress-section {
   margin: 16px 0 24px;
 }
@@ -134,6 +135,7 @@ select:focus-visible {
   color: #666;
   margin-top: 8px;
 }
+
 .progress-labels {
   display: flex;
   justify-content: space-between;
