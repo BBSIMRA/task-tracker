@@ -87,16 +87,7 @@ select:focus-visible {
   outline: 2px solid #3984e8;
   outline-offset: 2px;
 }
-.task-summary {
-  color: #666;
-  font-size: 14px;
-  margin: 8px 0 20px;
-}
-.task-summary {
-  color: #666;
-  font-size: 14px;
-  margin: 8px 0 20px;
-}
+
 .table-container {
   width: 100%;
   overflow-x: auto;
