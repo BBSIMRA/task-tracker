@@ -83,8 +83,6 @@ export default function TasksPage() {
       });
   }, [tasks, statusFilter, priorityFilter, sortOrder]);
 
-  const pendingCount = tasks.filter((task) => task.status === "Pending").length;
-
   const completedCount = tasks.filter(
     (task) => task.status === "Completed",
   ).length;
@@ -113,12 +111,6 @@ export default function TasksPage() {
             aria-valuemax={100}
           >
             <div className="progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-
-          <div className="progress-labels">
-            <span className="completed-label">{completedCount} Completed</span>
-
-            <span className="pending-label">{pendingCount} Pending</span>
           </div>
 
           <p className="progress-text">{progress}% completed</p>
