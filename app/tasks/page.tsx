@@ -104,6 +104,8 @@ const progress = tasks.length === 0
     <main className="tasks-page">
       <h1>Task Tracker</h1>
 
+
+      {!loading && !error && (
       <div className="progress-section">
   <div className="progress-heading">
     <span>Task Progress</span>
@@ -131,6 +133,8 @@ const progress = tasks.length === 0
     {progress}% completed
   </p>
 </div>
+      )}
+
       {/* Reusable filter component */}
       <TaskFilters
   statusFilter={statusFilter}
