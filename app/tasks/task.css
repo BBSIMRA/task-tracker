@@ -22,8 +22,15 @@
   border-radius: 5px;
 }
 
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .task-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -87,22 +94,6 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-}
-
-.table-container {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.task-table {
-  width: 100%;
-  min-width: 600px;
-}
-
 .progress-section {
   margin: 16px 0 24px;
 }
@@ -136,19 +127,3 @@ select:focus-visible {
   margin-top: 8px;
 }
 
-.progress-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-size: 13px;
-}
-
-.completed-label {
-  color: #16a36a;
-  font-weight: 500;
-}
-
-.pending-label {
-  color: #666;
-  font-weight: 500;
-}
